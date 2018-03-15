@@ -6,10 +6,11 @@ import { NgModule, Component } from '@angular/core';
 import { FormsModule } from "@angular/forms";
 import { RouterModule, Route } from "@angular/router";
 import { HttpModule } from "@angular/http";
-import { Http, Headers } from "@angular/http";
+// import { Http, Headers } from "@angular/http";
 import { AfterLoginComponent } from './after-login/after-login.component';
 import { ErrorComponent } from './error/error.component';
 import { LoginService } from './login.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,7 @@ import { LoginService } from './login.service';
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule,
+    HttpClientModule,
     RouterModule.forRoot([{
       path: '',
       redirectTo: 'login',

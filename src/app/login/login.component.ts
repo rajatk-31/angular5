@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { LoginService } from "../login.service";
 import { HttpModule } from '@angular/http';
 import { Router, ActivatedRoute } from "@angular/router";
-import { Http, Headers } from "@angular/http";
+// import { Http, Headers } from "@angular/http";
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +16,11 @@ export class LoginComponent implements OnInit {
     email: '',
     phone: ''
   };
-  constructor(private r: Router, private ar: ActivatedRoute, private login: LoginService, private http:Http) { }
+  constructor(
+    private r: Router, 
+    private ar: ActivatedRoute, 
+    private login: LoginService, 
+    private http:HttpClient) { }
 
   ngOnInit() {
   }
