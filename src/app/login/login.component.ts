@@ -26,8 +26,8 @@ export class LoginComponent implements OnInit {
   }
   logins(){
     console.log(this.loginform)
-    this.http.post('http://localhost:8000/login', this.loginform).subscribe(data => {
-      console.log(data.json());
+    this.http.post('https://jsonplaceholder.typicode.com/posts', this.loginform).subscribe(data => {
+      console.log(data);
       console.log('Api call completed');
     });
   }
