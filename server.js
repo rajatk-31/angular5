@@ -11,7 +11,7 @@ mongoose.connect(config.MONGO, (err, data)=>{
     else console.log("Database connected.")
 })
 
-
+app.set('secret', config.SECRET);
 
 app.listen(config.PORT, ()=>{
     console.log("Server started at port : "+config.PORT);
