@@ -4,12 +4,12 @@
         <div class="form-group">
           <h2 class="text-center">Login</h2>
           <p>Enter email</p>
-          <input type="email"class="form-control" placeholder="Enter email">
+          <input type="email"class="form-control" [(ngModel)]='loginform.email' placeholder="Enter email">
           <!-- <br> -->
           <p>Enter your password:</p>
-          <input type="text" class="form-control" placeholder="Enter password">
+          <input type="password" class="form-control" [(ngModel)]='loginform.password' placeholder="Enter password">
           <br>
-          <button type="submit" class="btn btn-primary">Login</button>
+          <button type="submit" class="btn btn-primary" (click)='logins()'>Login</button>
           <button type="submit"class="btn btn-basic" routerLink="/register" routerLinkActive="active" style="float:right;">Register</button>
         </div>
       </div>   

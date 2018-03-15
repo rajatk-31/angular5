@@ -1,5 +1,5 @@
 var mongoose = require('mongoose')
-var Schema = monngoose.Schema
+var Schema = mongoose.Schema
 
 var contacts = new Schema({
     email: String,
