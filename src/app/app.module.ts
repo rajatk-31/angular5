@@ -7,18 +7,20 @@ import { FormsModule } from "@angular/forms";
 import { RouterModule, Route } from "@angular/router";
 import { HttpModule } from "@angular/http";
 // import { Http, Headers } from "@angular/http";
-import { AfterLoginComponent } from './after-login/after-login.component';
 import { ErrorComponent } from './error/error.component';
 import { LoginService } from './login.service';
 import { HttpClientModule } from '@angular/common/http';
+import { HomeComponent } from './home/home.component';
+import { SearchPipe } from './search.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RegistrationComponent,
-    AfterLoginComponent,
-    ErrorComponent
+    ErrorComponent,
+    HomeComponent,
+    SearchPipe
   ],
   imports: [
     BrowserModule,
@@ -36,7 +38,7 @@ import { HttpClientModule } from '@angular/common/http';
       component: RegistrationComponent
     }, {
       path: 'home',
-      component: AfterLoginComponent
+      component: HomeComponent
     }, {
       path: '**',
       component: ErrorComponent

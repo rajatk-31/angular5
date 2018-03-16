@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpModule } from '@angular/http';
 import { Router, ActivatedRoute } from "@angular/router";
-import { Http, Headers } from "@angular/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 
 @Component({
   selector: 'app-registration',
@@ -9,11 +8,28 @@ import { Http, Headers } from "@angular/http";
   styleUrls: ['./registration.component.css']
 })
 export class RegistrationComponent implements OnInit {
-
-  constructor() {
+  email;
+  name;
+  password;
+  constructor( private http: HttpClient, private header: HttpHeaders, private router: Router, private activatedRoute: ActivatedRoute) {
+    
    }
 
   ngOnInit() {
   }
-
+  register() {
+    // start loader service
+    this.http.post('http://localhost:4000/register',{
+      email: this.email,
+      name: this.name,
+      password: this.password
+    }).subscribe((data: any) => {
+      // stop loader service
+      if (data.success) {
+        this.router.navigate( ['/login'] );
+      } else {
+        console.log( 'Registeration unsucessfull');
+      }
+    })
+  }
 }

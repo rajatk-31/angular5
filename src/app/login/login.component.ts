@@ -14,19 +14,24 @@ export class LoginComponent implements OnInit {
   header;
   loginform = {
     email: '',
-    phone: ''
+    password: ''
   };
   constructor(
-    private r: Router, 
-    private ar: ActivatedRoute, 
+    private router: Router, 
+    // private ar: ActivatedRoute, 
     private login: LoginService, 
-    private http:HttpClient) { }
+    private http: HttpClient) { }
 
   ngOnInit() {
   }
-  logins(){
+  logins() {
+    // start loader service
     console.log(this.loginform)
-    this.http.post('https://jsonplaceholder.typicode.com/posts', this.loginform).subscribe(data => {
+    this.http.post('http://localhost:4000/login', this.loginform).subscribe((data: any) => {
+      // stop loader service here
+      this.router.navigate(['/home']);
+      localStorage.setItem('token', data.token);
+      this.login.isLogin = true;
       console.log(data);
       console.log('Api call completed');
     });
