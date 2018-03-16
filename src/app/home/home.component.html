@@ -9,6 +9,8 @@
             <th scope="col">#</th>
             <th scope="col">Name</th> 
             <th scope="col">Phone</th>
+            <th scope="col">Edit</th>
+            <th scope="col">Remove</th>
           </tr>
           <tr *ngFor="let person of contacts| searchFilter : search; let i=index">
               <th scope="row">
@@ -19,6 +21,13 @@
            </td>
            <td>
               {{ person.phone }}
+           </td>
+           <td>
+              <i class="fa-edit"></i>
+           </td>
+           <td>
+              <i class="fa-trash"></i>
+              
            </td>
           </tr>
         </table>
