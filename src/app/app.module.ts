@@ -12,6 +12,9 @@ import { LoginService } from './login.service';
 import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './home/home.component';
 import { SearchPipe } from './search.pipe';
+import { LoginGuard } from "./login.guard";
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+
 
 @NgModule({
   declarations: [
@@ -23,6 +26,7 @@ import { SearchPipe } from './search.pipe';
     SearchPipe
   ],
   imports: [
+    NgbModule.forRoot(),
     BrowserModule,
     FormsModule,
     HttpClientModule,
@@ -38,14 +42,16 @@ import { SearchPipe } from './search.pipe';
       component: RegistrationComponent
     }, {
       path: 'home',
-      component: HomeComponent
+      component: HomeComponent,
+      canActivate: [LoginGuard]
     }, {
       path: '**',
       component: ErrorComponent
     }])
   ],
   providers: [
-    LoginService
+    LoginService,
+    LoginGuard
   ],
   bootstrap: [AppComponent]
 })

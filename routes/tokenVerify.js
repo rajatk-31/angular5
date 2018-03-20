@@ -1,6 +1,7 @@
 var jwt = require('jsonwebtoken')
 
 module.exports = (req,res,next)=>{
+    console.log(req.body,'----------------', req.headers)
     if(!req.headers['x-access-token']){
         res.json({
             success: false,

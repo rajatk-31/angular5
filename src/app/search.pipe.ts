@@ -8,14 +8,17 @@ export class SearchPipe implements PipeTransform {
   transform(items: any[], searchText: string): any[] {
     if (!items) {return []; }
     if (!searchText) {return items; }
-    let search = typeof parseInt(searchText, 10) === 'number' ? parseInt(searchText, 10) : searchText.toLowerCase();
+    let search: any;
+    let name: string;
+    search = (typeof parseInt(searchText, 10) === 'number') ? searchText : searchText.toLowerCase();
     return items.filter( it => {
-      if (typeof search === 'number') {
-        if (it.phone.toString().includes(search.toString())) {
+      if (parseInt(search, 10) != search) {
+        name = it.name.toLowerCase();
+        if (name.includes(search.toLowerCase())) {
           return it;
         }
       } else {
-        if (it.name.toLowerCase().includes(searchText)) {
+        if (it.phone.toString().includes(search)) {
           return it;
         }
       }

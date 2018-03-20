@@ -11,25 +11,26 @@ export class RegistrationComponent implements OnInit {
   email;
   name;
   password;
-  constructor( private http: HttpClient, private header: HttpHeaders, private router: Router, private activatedRoute: ActivatedRoute) {
-    
+  constructor( private http: HttpClient, private router: Router, private activatedRoute: ActivatedRoute) {
    }
 
   ngOnInit() {
   }
   register() {
+    console.log('here')
     // start loader service
-    this.http.post('http://localhost:4000/register',{
+    this.http.post('http://localhost:4000/register', {
       email: this.email,
       name: this.name,
       password: this.password
     }).subscribe((data: any) => {
+      console.log(data);
       // stop loader service
       if (data.success) {
         this.router.navigate( ['/login'] );
       } else {
         console.log( 'Registeration unsucessfull');
       }
-    })
+    });
   }
 }

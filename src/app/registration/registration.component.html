@@ -3,14 +3,14 @@
       <div class="idiv">
                 <h2 class="text-center">Register</h2>
                 <p>Enter name</p>
-                <input type="text"class="form-control" name = "register.name" placeholder="Enter name">
+                <input type="text"class="form-control" [(ngModel)]= "name" placeholder="Enter name">
                 <p>Enter email</p>
-                <input type="text"class="form-control" name = "register.email" placeholder="Enter email">
+                <input type="text"class="form-control" [(ngModel)]= "email" placeholder="Enter email">
                 <!-- <br> -->
                 <p>Enter your password:</p>
-                <input type="text" class="form-control" placeholder="Enter password">
+                <input type="password" class="form-control" [(ngModel)]= "password" placeholder="Enter password">
           <br>
-          <button type="submit" class="btn btn-primary" >Register</button>
+          <button type="submit" class="btn btn-primary" (click)='register()' >Register</button>
           <button type="submit" routerLink="/login" routerLinkActive="active" class="btn btn-basic" style="float:right;">Login</button>
       </div>   
     </div>      

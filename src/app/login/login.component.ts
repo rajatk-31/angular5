@@ -20,9 +20,13 @@ export class LoginComponent implements OnInit {
     private router: Router, 
     // private ar: ActivatedRoute, 
     private login: LoginService, 
-    private http: HttpClient) { }
+    private http: HttpClient) {
+    }
 
   ngOnInit() {
+    if(localStorage.getItem('token') && this.login.isLogin){
+      this.router.navigate(['/home'])
+    }
   }
   logins() {
     // start loader service
