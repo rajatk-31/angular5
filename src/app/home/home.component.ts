@@ -1,7 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Router, ActivatedRoute } from "@angular/router";
-import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { Router, ActivatedRoute } from '@angular/router';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import { CardComponent } from './card/card.component';
 
 @Component({
   selector: 'app-home',

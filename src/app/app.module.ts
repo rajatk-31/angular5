@@ -14,6 +14,7 @@ import { HomeComponent } from './home/home.component';
 import { SearchPipe } from './search.pipe';
 import { LoginGuard } from "./login.guard";
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { CardComponent } from './home/card/card.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     RegistrationComponent,
     ErrorComponent,
     HomeComponent,
-    SearchPipe
+    SearchPipe,
+    CardComponent
   ],
   imports: [
     NgbModule.forRoot(),
