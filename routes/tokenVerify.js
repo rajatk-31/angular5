@@ -1,20 +1,19 @@
 var jwt = require('jsonwebtoken')
 
-module.exports = (req,res,next)=>{
-    console.log(req.body,'----------------', req.headers)
-    if(!req.headers['x-access-token']){
+module.exports = (req, res, next) => {
+    if (!req.headers['x-access-token']) {
         res.json({
             success: false,
             msg: "Please provide token."
         })
-    }else{
-        jwt.verify(req.headers['x-access-token'], req.app.get('secret'), (err, decoded)=>{
-            if(err){
+    } else {
+        jwt.verify(req.headers['x-access-token'], req.app.get('secret'), (err, decoded) => {
+            if (err) {
                 res.json({
                     success: false,
                     msg: "Token not verified"
                 })
-            }else{
+            } else {
                 req.decoded = decoded;
                 next();
             }

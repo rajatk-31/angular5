@@ -43,12 +43,12 @@ export class HomeComponent implements OnInit {
     this.httpOptions = {
       headers: new HttpHeaders({ 'x-access-token': localStorage.getItem('token') })
     };
-    this.http.get('http://localhost:4000/showAll', this.httpOptions).subscribe(allCOntacts => {
-      console.log(allCOntacts.data)
+    this.http.get('http://localhost:4000/showAll', this.httpOptions).subscribe((allCOntacts: any) => {
+      // console.log(allCOntacts.data)
       if ( allCOntacts.success ) {
         this.contacts = allCOntacts.data.contact;
       } else {
-        alert(allCOntacts.msg)
+        alert(allCOntacts.msg);
       }
     })
   }
@@ -65,20 +65,20 @@ export class HomeComponent implements OnInit {
     this.httpOptions = {
       headers: new HttpHeaders({ 'x-access-token': localStorage.getItem('token') })
     };
-    this.http.post('http://localhost:4000/addContact', {name: this.name, phone: this.phone}, this.httpOptions).subscribe(res => {
+    this.http.post('http://localhost:4000/addContact', {name: this.name, phone: this.phone}, this.httpOptions).subscribe((res: any) => {
       console.log(res);
-      if(res.success){
+      if (res.success) {
         this.name = '';
         this.phone = undefined;
         this.mr.close('close');
-        this.http.get('http://localhost:4000/showAll', this.httpOptions).subscribe(allCOntacts => {
-      console.log(allCOntacts)
-      if(allCOntacts.success){
+        this.http.get('http://localhost:4000/showAll', this.httpOptions).subscribe((allCOntacts: any) => {
+      console.log(allCOntacts);
+      if (allCOntacts.success) {
         this.contacts = allCOntacts.data.contact;
-      }else{
-        alert(allCOntacts.msg)
+      } else {
+        alert(allCOntacts.msg);
       }
-    })
+    });
       }
     });
   }
