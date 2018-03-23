@@ -17,29 +17,40 @@ export class HomeComponent implements OnInit {
   mr;
   phone: number;
   httpOptions;
-  contacts = [ {
-    name: 'Rajat',
-    phone: 8003650500
-  }, {
-    name: 'Amit',
-    phone: 7065502855
-  }, {
-    name: 'Nitish',
-    phone: 9413686335
-  }, {
-    name: 'Nitin',
-    phone: 8505019814
-  }, {
-    name: 'Gaurav',
-    phone: 8387082049
-  }];
+  contacts;
+  // contacts = [ {
+  //   name: 'Rajat',
+  //   phone: 8003650500
+  // }, {
+  //   name: 'Amit',
+  //   phone: 7065502855
+  // }, {
+  //   name: 'Nitish',
+  //   phone: 9413686335
+  // }, {
+  //   name: 'Nitin',
+  //   phone: 8505019814
+  // }, {
+  //   name: 'Gaurav',
+  //   phone: 8387082049
+  // }];
   search;
   constructor(private http: HttpClient, private router: Router, private modal: NgbModal) {
-    
-    
+
    }
 
   ngOnInit() {
+    this.httpOptions = {
+      headers: new HttpHeaders({ 'x-access-token': localStorage.getItem('token') })
+    };
+    this.http.get('http://localhost:4000/showAll', this.httpOptions).subscribe(allCOntacts => {
+      console.log(allCOntacts.data)
+      if ( allCOntacts.success ) {
+        this.contacts = allCOntacts.data.contact;
+      } else {
+        alert(allCOntacts.msg)
+      }
+    })
   }
   open(content) {
     this.mr = this.modal.open(content);
@@ -56,9 +67,19 @@ export class HomeComponent implements OnInit {
     };
     this.http.post('http://localhost:4000/addContact', {name: this.name, phone: this.phone}, this.httpOptions).subscribe(res => {
       console.log(res);
-      this.name = '';
-      this.phone = undefined;
-      this.mr.close('close');
+      if(res.success){
+        this.name = '';
+        this.phone = undefined;
+        this.mr.close('close');
+        this.http.get('http://localhost:4000/showAll', this.httpOptions).subscribe(allCOntacts => {
+      console.log(allCOntacts)
+      if(allCOntacts.success){
+        this.contacts = allCOntacts.data.contact;
+      }else{
+        alert(allCOntacts.msg)
+      }
+    })
+      }
     });
   }
 
