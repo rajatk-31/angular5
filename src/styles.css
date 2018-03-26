@@ -3,14 +3,18 @@
 @import '~bootstrap/dist/css/bootstrap.min.css';
 @import '~font-awesome/css/font-awesome.css';
 @import url('https://fonts.googleapis.com/css?family=Rammetto+One');
-.header-class{
+.header-class {
     background-color: black;
     color: white;
     font-style: 'Rammetto One', cursive;
     height: 40px;
-
 }
-.inner{
+
+.inner {
     padding-top: 10px;
     font-style: 'Rammetto One', cursive;
+}
+
+.startroot {
+    margin-left: 15px;
 }
